@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('marcas', function (Blueprint $table) {
             $table->id();
             $table->string('marca', 45);
+            $table->unsignedBigInteger('modelo_id');
+            $table->foreign('modelo_id')
+                ->reference('id')
+                ->on('modelos')
+                ->onDeleted('cascade');
             $table->timestamps();
         });
     }
