@@ -18,6 +18,30 @@ return new class extends Migration
             $table->string('imei', 15);
             $table->text('descripcion');
             $table->timestamps();
+
+            $table->unsignedBigInteger('funcionario_id')->nullable();
+            $table->foreign('funcionario_id')
+                ->reference('id')
+                ->on('funcionarios')
+                ->onDelete('cascade');
+
+            $table->unsignedBigInteger('marca_id')->nullable();
+            $table->foreign('marca_id')
+                ->reference('id')
+                ->on('marcas')
+                ->onDelete('cascade');
+
+            $table->string('linea',25)->nullable();
+            $table->foreign('linea')
+                ->reference('linea')
+                ->on('abonados')
+                ->onDelete('cascade');
+
+            $table->unsignedBigInteger('numero_acta')->nullable();
+            $table->foreign('numero_acta')
+                ->reference('numero_acta')
+                ->on('actas')
+                ->onDelete('set null');
         });
     }
 
