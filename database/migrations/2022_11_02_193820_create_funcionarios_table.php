@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('grado_id')->nullable();
 
             $table->foreign('grado_id')
-                ->reference('id')
+                ->references('id')
                 ->on('grados')
                 ->onDelete('set null');
 

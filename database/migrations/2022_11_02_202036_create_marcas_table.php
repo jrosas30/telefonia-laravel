@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('marca', 45);
             $table->unsignedBigInteger('modelo_id');
             $table->foreign('modelo_id')
-                ->reference('id')
+                ->references('id')
                 ->on('modelos')
                 ->onDeleted('cascade');
             $table->timestamps();
