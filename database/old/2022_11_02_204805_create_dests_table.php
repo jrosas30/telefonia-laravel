@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('dests', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+
+            $table->unsignedBigInteger('unids_id')->nullable();
+            $table->foreign('unids_id')
+                ->references('id')
+                ->on('unids')
+                ->onDelete('set null')
+                ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

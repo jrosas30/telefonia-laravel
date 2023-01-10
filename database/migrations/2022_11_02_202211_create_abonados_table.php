@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('abonados', function (Blueprint $table) {
-            $table->string('linea', 9);
+            $table->string('linea', 9)->primary();
             $table->string('simcard', 25);
             $table->timestamps();
         });

@@ -13,8 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('unids', function (Blueprint $table) {
+        Schema::create('dests', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->unsignedBigInteger('unid_id')->nullable();
+            $table->foreign('unid_id')
+                ->references('id')
+                ->on('unids')
+                ->onDelete('set null')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unids');
+        Schema::dropIfExists('dests');
     }
 };

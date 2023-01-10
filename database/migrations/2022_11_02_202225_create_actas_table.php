@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('actas', function (Blueprint $table) {
-            $table->unsignedBigInteger('numero_acta');
+            $table->integer('numero_acta')->primary();
+            $table->date('fecha');
+            $table->string('path');
             $table->timestamps();
         });
     }

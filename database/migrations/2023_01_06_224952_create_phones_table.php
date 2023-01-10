@@ -21,27 +21,31 @@ return new class extends Migration
 
             $table->unsignedBigInteger('funcionario_id')->nullable();
             $table->foreign('funcionario_id')
-                ->reference('id')
+                ->references('id')
                 ->on('funcionarios')
                 ->onDelete('cascade');
 
             $table->unsignedBigInteger('marca_id')->nullable();
             $table->foreign('marca_id')
-                ->reference('id')
+                ->references('id')
                 ->on('marcas')
                 ->onDelete('cascade');
 
-            $table->string('linea',25)->nullable();
-            $table->foreign('linea')
-                ->reference('linea')
-                ->on('abonados')
-                ->onDelete('cascade');
+            $table->string('abonado', 9);
+            $table->foreign('abonado')
+                ->references('linea')
+                ->on('abonados');
 
-            $table->unsignedBigInteger('numero_acta')->nullable();
-            $table->foreign('numero_acta')
-                ->reference('numero_acta')
-                ->on('actas')
-                ->onDelete('set null');
+            $table->integer('acta')->nullable();
+            $table->foreign('acta')
+                ->references('numero_acta')
+                ->on('actas');
+
+            $table->unsignedBigInteger('altasrep_id')->nullable();
+            $table->foreign('altasrep_id')
+            ->references('id')->on('altasreps')
+            ->onDelete('set null')->onUpdate('cascade');
+
         });
     }
 

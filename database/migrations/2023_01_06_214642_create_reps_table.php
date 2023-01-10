@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('altasreps', function (Blueprint $table) {
+        Schema::create('reps', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->unsignedBigInteger('altasrep_id')->nullable();
+            $table->foreign('altasrep_id')
+                ->references('id')->on('altasreps')
+                ->onDelete('set null');
+
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('altasreps');
+        Schema::dropIfExists('reps');
     }
 };
