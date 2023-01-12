@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Altasrep;
+use App\Models\Dest;
 use Illuminate\Http\Request;
 use App\Models\Phone;
+use App\Models\Rep;
+use App\Models\Unid;
 
 class PhoneController extends Controller
 {
@@ -15,9 +18,12 @@ class PhoneController extends Controller
      */
     public function index()
     {
-        $altasR = Altasrep::all();
+        $altasReparticiones = Altasrep::all();
+        $reparticiones = Rep::all();
+        $unidades = Unid::all();
+        $destacamentos = Dest::all();
 
-        return view('phones.index', compact('altasR'));
+        return view('phones.index', compact('altasReparticiones','reparticiones', 'unidades', 'destacamentos'));
     }
 
     /**
